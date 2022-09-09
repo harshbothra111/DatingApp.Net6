@@ -10,6 +10,7 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 builder.Services.AddControllersWithViews();
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -20,7 +21,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseStaticFiles();
 app.UseRouting();
-
+app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod());
 
 app.MapControllerRoute(
     name: "default",
