@@ -7,11 +7,11 @@ import { User } from '../_models/user';
   providedIn: 'root'
 })
 export class AccountService {
-  private currentUserSource = new ReplaySubject<User | any>(1);
+  private currentUserSource = new ReplaySubject<User>(1);
   currentUser$ = this.currentUserSource.asObservable();
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
-
+    this.currentUserSource.next(null);
   }
   login(model: any) {
     return this.http.post<User>(this.baseUrl + "account/login", model).pipe(
