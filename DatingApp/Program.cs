@@ -1,6 +1,7 @@
 using DatingApp.Data;
 using DatingApp.Extensions;
 using DatingApp.Interfaces;
+using DatingApp.Middleware;
 using DatingApp.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,8 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
 }
+
+app.UseMiddleware<ExceptionMiddlleware>();
 
 app.UseStaticFiles();
 app.UseRouting();

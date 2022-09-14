@@ -38,6 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\src\app\errors\" />
     <Folder Include="ClientApp\src\app\_guards\" />
   </ItemGroup>
 
